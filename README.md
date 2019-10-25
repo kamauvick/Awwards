@@ -8,6 +8,7 @@
 
 
 ## Screenshots
+<img src="https://github.com/kamauvick/Awwards/blob/master/myapp/static/assets/awwards.png?raw=true" width=1000>
 
 ## Setup Instructions:
 ### Requirements
