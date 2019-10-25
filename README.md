@@ -5,6 +5,13 @@
 > Victor Waichigo K.
 
 ## Description
+Awwards is an application that allows users to post projects that they have created and get it reviewed by their peers.
+
+A project can be rated based on 3 different criteria
+
+* Design
+* Usability
+* Content
 
 
 ## Screenshots
