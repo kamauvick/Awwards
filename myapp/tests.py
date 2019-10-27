@@ -1,14 +1,15 @@
 from django.test import TestCase
 
-from .models import Project, Profile, Rate, User
+from .models import Project, Profile, User
 
 new_user = User(username='vick')
 
 test_project = Project(
-    title='Hello world',
-    details='a hello world app',
-    link='https://github.com/hello.git',
-    user=new_user, image='/media/hello.jpg',
+    id=1,
+    title='Test Hello',
+    details='a test hello world app',
+    link='https://github.com/testhello.git',
+    user=new_user, image='/media/test_hello.jpg',
     user_project_id='1',
     design='7',
     usability='8',
@@ -21,6 +22,7 @@ test_project = Project(
 class TestProject(TestCase):
     def setUp(self) -> None:
         self.new_project = Project(
+            id=1,
             title='Hello world',
             details='a hello world app',
             link='https://github.com/hello.git',
@@ -43,22 +45,23 @@ class TestProject(TestCase):
         self.new_project.save()
         after = Project.objects.all()
 
-        self.assertTrue(before < after)
+        self.assertLess(before, after)
 
     def testDeleteProject(self):
         before = Project.objects.all()
         self.new_project.delete()
         after = Project.objects.all()
 
-        self.assertTrue(before > after)
+        self.assertGreater(before, after)
 
     def tearDown(self) -> None:
-        self.new_project.delete()
+        Project.objects.all().delete()
 
 
 class TestProfile(TestCase):
     def setUp(self) -> None:
         self.new_profile = Profile(
+            id=1,
             profile_picture='media/profile.jpg',
             prof_user=new_user,
             bio='this is a test default bio',
@@ -75,7 +78,7 @@ class TestProfile(TestCase):
         self.new_profile.save()
         after = Profile.objects.all()
 
-        self.assertTrue(before < after)
+        self.assertLess(before, after)
 
     def testEditProfile(self):
         before = Profile.objects.all()
@@ -89,8 +92,7 @@ class TestProfile(TestCase):
         self.new_profile.save()
         after = Profile.objects.all()
 
-        self.assertTrue(before > after)
+        self.assertGreater(before, after)
 
     def tearDown(self) -> None:
-        self.new_profile.delete()
-
+        Profile.objects.all().delete()
